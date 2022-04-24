@@ -29,7 +29,7 @@ export default {
       input.value = "";
     }
 
-    watch(input, (val) => {
+    watch(invalidInput, (val) => {
       if (val) {
         console.warn("Invalid input detected");
       }
