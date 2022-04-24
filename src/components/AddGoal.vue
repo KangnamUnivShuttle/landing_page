@@ -1,26 +1,21 @@
 <template>
   <div>
     <div>
-      <button @click="context.addGoal">add</button>
-      <input type="text" name="" id="" v-model="context.input" />
+      <button @click="addGoal">add</button>
+      <input type="text" name="" id="" v-model="input" />
     </div>
-    <div v-if="context.invalidInput">
+    <div v-if="invalidInput">
       <span>Invalid input</span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed, watchEffect, watch } from "vue";
-import { Options, Vue, setup } from "vue-class-component";
-// import { Watch } from "vue-property-decorator";
+import { ref, watch } from "vue";
 
-@Options({
-  components: {},
-})
-export default class AddGoal extends Vue {
-  // https://vuejs.org/api/composition-api-setup.html#setup-context
-  context = setup(() => {
+export default {
+  emits: ["add-goal"],
+  setup(props, { emit }) {
     const input = ref("");
     const invalidInput = ref(false);
 
@@ -30,43 +25,88 @@ export default class AddGoal extends Vue {
         invalidInput.value = true;
         return;
       }
-      //   context.emit("add-goal", input.value);
+      emit("add-goal", input.value);
       input.value = "";
     }
 
-    watch(invalidInput, (val) => {
+    watch(input, (val) => {
       if (val) {
         console.warn("Invalid input detected");
       }
     });
 
     return {
-      input: input.value,
-      invalidInput: invalidInput.value,
+      input,
+      invalidInput,
       addGoal,
     };
-  });
-  //   input = "";
-  //   invalidInput = false;
-
-  //   @Watch("invalidInput")
-  //   onInvalidInputDetected(val: string) {
-  //     if (val) {
-  //       console.warn("Invalid input detected");
-  //     }
-  //   }
-
-  //   addGoal() {
-  //     this.invalidInput = false;
-  //     if (this.input === "") {
-  //       this.invalidInput = true;
-  //       return;
-  //     } else {
-  //       this.$emit("add-goal", this.input);
-  //       this.input = "";
-  //     }
-  //   }
-}
+  },
+};
 </script>
 
+<!--
+<script lang="ts">
+import { Options, Vue, setup } from "vue-class-component";
+@Options({
+  components: {},
+})
+export default class AddGoal extends Vue {}
+</script>-->
+<!--
+<script setup lang="ts">
+// https://stackoverflow.com/q/71599533/7270469
+import {
+  ref,
+  computed,
+  watchEffect,
+  watch,
+  SetupContext,
+  defineEmits,
+} from "vue";
+// import { Watch } from "vue-property-decorator";
+
+const input = ref("");
+const invalidInput = ref(false);
+
+const emits = defineEmits(["add-goal"]);
+
+function addGoal() {
+  invalidInput.value = false;
+  if (input.value === "") {
+    invalidInput.value = true;
+    return;
+  }
+  //   context.emit("add-goal", input.value);
+  emits("add-goal", input.value);
+  input.value = "";
+}
+
+watch(invalidInput, (val) => {
+  if (val) {
+    console.warn("Invalid input detected");
+  }
+});
+
+//   input = "";
+//   invalidInput = false;
+
+//   @Watch("invalidInput")
+//   onInvalidInputDetected(val: string) {
+//     if (val) {
+//       console.warn("Invalid input detected");
+//     }
+//   }
+
+//   addGoal() {
+//     this.invalidInput = false;
+//     if (this.input === "") {
+//       this.invalidInput = true;
+//       return;
+//     } else {
+//       this.$emit("add-goal", this.input);
+//       this.input = "";
+//     }
+//   }
+</script>
+-->
 <style></style>
