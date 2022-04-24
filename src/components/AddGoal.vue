@@ -4,14 +4,15 @@
       <button @click="addGoal">add</button>
       <input type="text" name="" id="" v-model="input" />
     </div>
-    <div>
-      <span></span>
+    <div v-if="invalidInput">
+      <span>Invalid input</span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { Watch } from "vue-property-decorator";
 
 @Options({
   components: {},
@@ -19,6 +20,11 @@ import { Options, Vue } from "vue-class-component";
 export default class AddGoalComponent extends Vue {
   input = "";
   invalidInput = false;
+
+  @Watch("input")
+  onInputChanged(val: string, oldVal: string) {
+    console.log("val", val, oldVal);
+  }
 
   addGoal() {
     this.invalidInput = false;
