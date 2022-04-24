@@ -20,11 +20,7 @@ class Props {
 @Options({
   components: {},
 })
-export default class GoalsList extends Vue.with(Props) {
-  mounted() {
-    console.log("GoalsList.goals", this.goals.length, this.goals);
-  }
-}
+export default class GoalsList extends Vue.with(Props) {}
 </script>
 
 <style></style>
