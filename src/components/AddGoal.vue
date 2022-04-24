@@ -1,7 +1,12 @@
 <template>
   <div>
-    <button @click="onBtnAddClick">add</button>
-    <input type="text" name="" id="" v-model="input" />
+    <div>
+      <button @click="addGoal">add</button>
+      <input type="text" name="" id="" v-model="input" />
+    </div>
+    <div>
+      <span></span>
+    </div>
   </div>
 </template>
 
@@ -13,9 +18,17 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class AddGoalComponent extends Vue {
   input = "";
+  invalidInput = false;
 
-  onBtnAddClick() {
-    console.log("asdf");
+  addGoal() {
+    this.invalidInput = false;
+    if (this.input === "") {
+      this.invalidInput = true;
+      return;
+    } else {
+      this.$emit("add-goal", this.input);
+      this.input = "";
+    }
   }
 }
 </script>

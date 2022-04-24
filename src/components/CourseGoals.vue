@@ -1,7 +1,7 @@
 <template>
   <div>
     <goals-list :goals="filteredGoals"></goals-list>
-    <add-goal></add-goal>
+    <add-goal @add-goal="addText"></add-goal>
   </div>
 </template>
 
