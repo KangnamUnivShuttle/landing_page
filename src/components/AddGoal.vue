@@ -21,9 +21,11 @@ export default class AddGoalComponent extends Vue {
   input = "";
   invalidInput = false;
 
-  @Watch("input")
-  onInputChanged(val: string, oldVal: string) {
-    console.log("val", val, oldVal);
+  @Watch("invalidInput")
+  onInvalidInputDetected(val: string) {
+    if (val) {
+      console.warn("Invalid input detected");
+    }
   }
 
   addGoal() {
