@@ -1,6 +1,8 @@
 <template>
-  <v-container>
+  <v-container style="padding: 0" fluid="true">
     <service-title></service-title>
+  </v-container>
+  <v-container>
     <service-preview></service-preview>
     <in-using-services></in-using-services>
     <contact-us></contact-us>
