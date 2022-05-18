@@ -9,7 +9,7 @@ import { aliases, fa } from "vuetify/iconsets/fa";
 
 export default createVuetify({
   theme: {
-    defaultTheme: "dark",
+    // defaultTheme: "dark",
   },
   icons: {
     defaultSet: "mdi",
