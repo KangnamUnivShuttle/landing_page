@@ -15,6 +15,7 @@
           autoplay
           muted
           playsinline
+          loop
           style="
             height: 300px;
             width: 100%;
