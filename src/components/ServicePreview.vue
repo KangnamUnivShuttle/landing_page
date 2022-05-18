@@ -1,5 +1,11 @@
 <template>
-  <div></div>
+  <div>
+    <v-row>
+      <v-col>asdf</v-col>
+      <v-col>asdf</v-col>
+      <v-col>asdf</v-col>
+    </v-row>
+  </div>
 </template>
 
 <script lang="ts">
