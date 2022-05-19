@@ -15,7 +15,7 @@
             style="width: 50px"
             src="https://img1.daumcdn.net/thumb/C100x100.mplusfriend/?fname=http%3A%2F%2Fk.kakaocdn.net%2Fdn%2Fbfkq3p%2FbtqtY1YfeWN%2FlrvS9Fg2XFnUIYCA0aOci1%2Fimg_s.jpg"
           />
-          강남대학교 달구지봇
+          강남대학교 달구지봇 (테스트)
         </div>
       </v-col>
     </v-row>
