@@ -11,7 +11,7 @@
         "
       >
         <video
-          src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          :src="require('../assets/bg.mp4')"
           autoplay
           muted
           playsinline
