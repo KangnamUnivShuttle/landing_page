@@ -1,5 +1,13 @@
 <template>
   <div style="margin-top: 15px">
+    <v-row>
+      <v-col style="height: 100px"></v-col>
+    </v-row>
+    <v-row>
+      <v-col style="text-align: center; margin-top: 15px">
+        <h2>서비스 주요 기능</h2>
+      </v-col>
+    </v-row>
     <photo-and-text
       v-for="preview in previewList"
       :key="preview"
@@ -7,6 +15,9 @@
       :toggle="preview.toggle"
       :msg="preview.msg"
     ></photo-and-text>
+    <v-row>
+      <v-col style="height: 100px"></v-col>
+    </v-row>
   </div>
 </template>
 
